@@ -23,7 +23,7 @@ class CarRepositoryEloquent implements CarRepositoryInterface
 
     public function getList()
     {
-        return $this->car->paginate(15);
+        return $this->car->all();
     }
 
     public function get(int $car)

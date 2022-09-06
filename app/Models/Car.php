@@ -24,6 +24,6 @@ class Car extends Model implements AuthenticatableContract, AuthorizableContract
     ];
 
     public function users(){
-        return $this->belongsToMany(User::class,'car_user', 'user_id', 'car_id');
+        return $this->belongsToMany(User::class);
     }
 }

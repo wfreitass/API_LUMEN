@@ -21,7 +21,7 @@ class UserService
 
     public function getList()
     {
-        return $this->user->getList(15);
+        return $this->user->getList();
     }
 
     public function get(int $user)

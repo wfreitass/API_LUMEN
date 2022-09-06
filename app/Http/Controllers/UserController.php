@@ -57,14 +57,16 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $newUser = $this->user->store($request->all());
-        return $newUser->cars()->attach($request->all('cars')['cars']);
+        return $this->user->store($request->all());
+        // return $newUser->cars()->attach($request->all('cars')['cars']);
         // return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!']]);
     }
 
     public function getList()
     {
-        return $this->user->getList(15);
+        // $user = $this->user->get(1);
+        // return$user->cars()->get();
+        return $this->user->getList();
     }
 
     public function show($user)

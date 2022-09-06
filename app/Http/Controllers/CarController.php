@@ -23,7 +23,7 @@ class CarController extends Controller
 
     public function getList()
     {
-        return $this->car->getList(15);
+        return $this->car->getList();
     }
 
     public function show($car)

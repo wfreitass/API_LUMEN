@@ -21,7 +21,7 @@ class CarService
 
     public function getList()
     {
-        return $this->car->getList(15);
+        return $this->car->getList();
     }
 
     public function get(int $car)

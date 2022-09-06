@@ -17,13 +17,19 @@ class UserRepositoryEloquent implements UserRepositoryInterface
 
     public function store(array $data)
     {
-        return $this->user->create($data);
-        // return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!']]);
+        $newUser = $this->user->create($data);
+        $newUser->cars()->attach($data['cars']);
+        return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!', 'user' => $newUser]]);
     }
 
     public function getList()
     {
-        return $this->user->paginate(15);
+         
+        $users = $this->user->all();
+        foreach ($users as $key => $user) {
+            $users[$key]['cars'] = $user->cars()->get();
+        }
+        return $users;
     }
 
     public function get(int $user)
