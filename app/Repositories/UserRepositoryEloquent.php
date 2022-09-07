@@ -19,17 +19,15 @@ class UserRepositoryEloquent implements UserRepositoryInterface
     {
         $newUser = $this->user->create($data);
         $newUser->cars()->attach($data['cars']);
-        return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!', 'user' => $newUser]]);
+        return $newUser;
+        // return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!', 'user' => $newUser]]);
     }
 
     public function getList()
     {
-         
-        $users = $this->user->all();
-        foreach ($users as $key => $user) {
-            $users[$key]['cars'] = $user->cars()->get();
-        }
-        return $users;
+        // $user = $this->user->all(); 
+        return $this->user->all(); 
+        
     }
 
     public function get(int $user)
@@ -47,5 +45,15 @@ class UserRepositoryEloquent implements UserRepositoryInterface
     public function destroy(int $user)
     {
         return $this->user->find($user)->delete();
+    }
+
+    public function connetCar(int $user, array $data){
+        $user = $this->user->find($user);
+        $user->cars()->attach($data);
+        return $user;
+    }
+
+    public function disassociateCar(int $user, array $data){
+
     }
 }

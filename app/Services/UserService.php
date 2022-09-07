@@ -15,13 +15,18 @@ class UserService
 
     public function store(array $data)
     {
-        return $this->user->store($data);
+        $user = $this->user->store($data);
         // return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!']]);
+        return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!', 'user' => $user]]);
     }
 
     public function getList()
     {
-        return $this->user->getList();
+        $users = $this->user->getList();
+        foreach ($users as $key => $user) {
+            $users[$key]['cars'] = $user->cars()->get();
+        }
+        return $users;
     }
 
     public function get(int $user)
@@ -31,11 +36,18 @@ class UserService
 
     public function update(array $data, int $user)
     {
-        return $this->user->update($data, $user);
+        $this->user->update($data, $user);
+        return response()->json(['data' => ['success' => 'Usuário Atualizado com sucesso!']]);
     }
 
     public function destroy(int $user)
     {
         $this->user->destroy($user);
+        return response()->json(['data' => ['success' => 'Usuário Excluído com sucesso!']]);
+    }
+
+    public function connetCar(int $user, array $data){
+        $this->user->connetCar($user, $data);
+        return response()->json(['data' => ['success' => 'Carros Associados com sucesso!']]);
     }
 }

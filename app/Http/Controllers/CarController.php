@@ -17,8 +17,6 @@ class CarController extends Controller
     public function store(Request $request)
     {
         return  $this->car->store($request->all());
-
-        // return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!']]);
     }
 
     public function getList()
@@ -29,8 +27,6 @@ class CarController extends Controller
     public function show($car)
     {
         return $this->car->get($car);
-        // return $this->car->get($car);
-
     }
 
     public function update(Request $request, int $car)
@@ -40,6 +36,6 @@ class CarController extends Controller
 
     public function destroy(int $car)
     {
-        $this->car->destroy($car);
+        return $this->car->destroy($car);
     }
 }

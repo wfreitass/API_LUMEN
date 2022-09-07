@@ -58,22 +58,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         return $this->user->store($request->all());
-        // return $newUser->cars()->attach($request->all('cars')['cars']);
-        // return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!']]);
     }
 
     public function getList()
     {
-        // $user = $this->user->get(1);
-        // return$user->cars()->get();
         return $this->user->getList();
     }
 
     public function show($user)
     {
         return $this->user->get($user);
-        // return $this->user->get($user);
-
     }
 
     public function update(Request $request, int $user)
@@ -83,6 +77,10 @@ class UserController extends Controller
 
     public function destroy(int $user)
     {
-        $this->user->destroy($user);
+        return $this->user->destroy($user);
+    }
+
+    public function connetCar(int $user, Request $request){
+        return $this->user->connetCar($user, $request->all('cars')['cars']);
     }
 }

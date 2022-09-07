@@ -15,8 +15,8 @@ class CarService
 
     public function store(array $data)
     {
-        return $this->car->store($data);
-        // return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!']]);
+        $this->car->store($data);
+        return response()->json(['data' => ['success' => 'Carro Criado com sucesso!']]);
     }
 
     public function getList()
@@ -31,11 +31,14 @@ class CarService
 
     public function update(array $data, int $car)
     {
-        return $this->car->update($data, $car);
+        $this->car->update($data, $car);
+        return response()->json(['data' => ['success' => 'Carro Atualizado com sucesso!']]);
     }
 
     public function destroy(int $car)
     {
         $this->car->destroy($car);
+        return response()->json(['data' => ['success' => 'Carro Excluído com sucesso!']]);
+
     }
 }

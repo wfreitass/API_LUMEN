@@ -25,6 +25,7 @@ $router->group(['prefix' => 'users'], function () use ($router) {
     $router->get('/{user}', 'UserController@show');
 
     $router->post('/', 'UserController@store');
+    $router->post('/connetCar/{user}', 'UserController@connetCar');
     $router->put('/{user}', 'UserController@update');
     $router->delete('/{user}', 'UserController@destroy');
 });
@@ -34,6 +35,7 @@ $router->group(['prefix' => 'cars'], function () use ($router) {
     $router->get('/{car}', 'CarController@show');
 
     $router->post('/', 'CarController@store');
+   
     $router->put('/{car}', 'CarController@update');
     $router->delete('/{car}', 'CarController@destroy');
 });
