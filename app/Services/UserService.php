@@ -46,8 +46,13 @@ class UserService
         return response()->json(['data' => ['success' => 'Usuário Excluído com sucesso!']]);
     }
 
-    public function connetCar(int $user, array $data){
-        $this->user->connetCar($user, $data);
-        return response()->json(['data' => ['success' => 'Carros Associados com sucesso!']]);
+    public function connectCar(int $user, array $data){
+        $this->user->connectCar($user, $data);
+        return response()->json(['data' => ['success' => 'Carro(s) Associados com sucesso!']]);
+    }
+
+    public function disassociateCar(int $user, array $data){
+        $user = $this->user->disassociateCar($user, $data);
+        return response()->json(['data' => ['success' => 'Carro(s) Desassociados com sucesso!']]);
     }
 }

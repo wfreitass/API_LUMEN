@@ -80,7 +80,13 @@ class UserController extends Controller
         return $this->user->destroy($user);
     }
 
-    public function connetCar(int $user, Request $request){
-        return $this->user->connetCar($user, $request->all('cars')['cars']);
+    public function connectCar(int $user, Request $request)
+    {
+        return $this->user->connectCar($user, $request->all('cars')['cars']);
+    }
+
+    public function disassociateCar(int $user, Request $request)
+    {
+        return $this->user->disassociateCar($user, $request->all('cars')['cars']);
     }
 }

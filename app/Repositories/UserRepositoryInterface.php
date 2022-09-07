@@ -18,7 +18,7 @@ interface UserRepositoryInterface
 
     public function destroy(int $user);
 
-    public function connetCar(int $user, array $data);
+    public function connectCar(int $user, array $data);
 
     public function disassociateCar(int $user, array $data);
 }

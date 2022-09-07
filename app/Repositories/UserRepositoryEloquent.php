@@ -47,13 +47,15 @@ class UserRepositoryEloquent implements UserRepositoryInterface
         return $this->user->find($user)->delete();
     }
 
-    public function connetCar(int $user, array $data){
+    public function connectCar(int $user, array $data){
         $user = $this->user->find($user);
         $user->cars()->attach($data);
         return $user;
     }
 
     public function disassociateCar(int $user, array $data){
-
+        $user = $this->user->find($user);
+        $user->cars()->detach($data);
+        return $user;
     }
 }
