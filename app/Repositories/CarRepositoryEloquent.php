@@ -18,7 +18,6 @@ class CarRepositoryEloquent implements CarRepositoryInterface
     public function store(array $data)
     {
         return $this->car->create($data);
-        // return response()->json(['data' => ['success' => 'Usuário Criado com sucesso!']]);
     }
 
     public function getList()
@@ -29,8 +28,6 @@ class CarRepositoryEloquent implements CarRepositoryInterface
     public function get(int $car)
     {
         return $this->car->find($car);
-        // return $this->car->find($car)->cars();
-
     }
 
     public function update(array $data, int $car)

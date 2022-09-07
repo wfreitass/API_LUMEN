@@ -2,8 +2,6 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -23,10 +21,9 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'users'], function () use ($router) {
     $router->get('/', 'UserController@getList');
     $router->get('/{user}', 'UserController@show');
-
     $router->post('/', 'UserController@store');
-    $router->post('/connectCar/{user}', 'UserController@connectCar');
-    $router->post('/disassociateCar/{user}', 'UserController@disassociateCar');
+    $router->post('/connectcar/{user}', 'UserController@connectCar');
+    $router->post('/disassociatecar/{user}', 'UserController@disassociateCar');
     $router->put('/{user}', 'UserController@update');
     $router->delete('/{user}', 'UserController@destroy');
 });
@@ -34,9 +31,7 @@ $router->group(['prefix' => 'users'], function () use ($router) {
 $router->group(['prefix' => 'cars'], function () use ($router) {
     $router->get('/', 'CarController@getList');
     $router->get('/{car}', 'CarController@show');
-
     $router->post('/', 'CarController@store');
-   
     $router->put('/{car}', 'CarController@update');
     $router->delete('/{car}', 'CarController@destroy');
 });
